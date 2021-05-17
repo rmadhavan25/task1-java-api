@@ -6,12 +6,21 @@ public class DirectoryModel {
 
         private String directoryPath;
         private String keyword;
-        private ArrayList<String> allFiles;
+        private ArrayList<HashMap<String,String>> res;
 
-        public DirectoryModel(String directoryPath,String keyword,ArrayList<String> allFiles){
+
+        public DirectoryModel(String directoryPath,String keyword,ArrayList<HashMap<String,String>> res){
             this.directoryPath = directoryPath;
             this.keyword = keyword;
-            this.allFiles = allFiles;
+            this.res = res;
+        }
+
+        public ArrayList<HashMap<String, String>> getRes() {
+            return res;
+        }
+
+        public void setRes(ArrayList<HashMap<String, String>> res) {
+            this.res = res;
         }
 
         public String getDirectoryPath() {
@@ -22,10 +31,6 @@ public class DirectoryModel {
             return keyword;
         }
 
-        public ArrayList<String> getAllFiles() {
-            return allFiles;
-        }
-
         public void setDirectoryPath(String directoryPath) {
             this.directoryPath = directoryPath;
         }
@@ -33,11 +38,6 @@ public class DirectoryModel {
         public void setKeyword(String keyword) {
             this.keyword = keyword;
         }
-
-        public void setAllFiles(ArrayList<String> allFiles) {
-            this.allFiles = allFiles;
-        }
-
 
 
     }
