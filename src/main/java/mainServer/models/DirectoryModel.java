@@ -6,21 +6,21 @@ public class DirectoryModel {
 
         private String directoryPath;
         private String keyword;
-        private ArrayList<HashMap<String,String>> res;
+        private ArrayList<HashMap<String,String>> files;
 
 
-        public DirectoryModel(String directoryPath,String keyword,ArrayList<HashMap<String,String>> res){
+        public DirectoryModel(String directoryPath,String keyword,ArrayList<HashMap<String,String>> files){
             this.directoryPath = directoryPath;
             this.keyword = keyword;
-            this.res = res;
+            this.files = files;
         }
 
-        public ArrayList<HashMap<String, String>> getRes() {
-            return res;
+        public ArrayList<HashMap<String, String>> getFiles() {
+            return files;
         }
 
-        public void setRes(ArrayList<HashMap<String, String>> res) {
-            this.res = res;
+        public void setFiles(ArrayList<HashMap<String, String>> files) {
+            this.files = files;
         }
 
         public String getDirectoryPath() {
