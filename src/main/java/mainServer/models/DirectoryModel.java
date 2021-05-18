@@ -8,6 +8,10 @@ public class DirectoryModel {
         private String keyword;
         private ArrayList<HashMap<String,String>> files;
 
+        public DirectoryModel(){
+            
+        }
+
 
         public DirectoryModel(String directoryPath,String keyword,ArrayList<HashMap<String,String>> files){
             this.directoryPath = directoryPath;

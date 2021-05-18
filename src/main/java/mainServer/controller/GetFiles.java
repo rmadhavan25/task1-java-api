@@ -7,6 +7,10 @@ import mainServer.models.*;
 public class GetFiles {
 
         ArrayList<HashMap<String,String>> files = new ArrayList<HashMap<String,String>>();
+
+        public GetFiles(){
+
+        }
         
 
         public DirectoryModel getAllFiles(String directoryPath, String keyword){
