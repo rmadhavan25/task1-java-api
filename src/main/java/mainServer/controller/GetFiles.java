@@ -13,19 +13,21 @@ public class GetFiles {
         }
         
 
-        public DirectoryModel getAllFiles(String directoryPath, String keyword){
+        public DirectoryModel getAllFiles(String directoryPath, String keyword,String phone){
 
             try{
 
                 //---------getting all files----------------------------------------------------
                 File path = new File(directoryPath);
                 File[] filesList = path.listFiles();
+                int flag = 0;//VARIABLE TO CHECK FOR ANY RESULTS AND TO TRIGGER saveHistory of HistoryController
 
                 if(filesList!=null){//checking if fileList is empty
 
                     for(File f:filesList){
                         //--------------comparing with keyword and adding them into arraylist------------------
                         if(f.getName().toLowerCase().contains(keyword.toLowerCase())){
+                            flag = 1;
 
                             //-------------------------get matched files and split them into 3 parts--------------------------------
                             // String alpha = f.getAbsolutePath().substring(0, f.getAbsolutePath().toLowerCase().indexOf(keyword.toLowerCase()));
@@ -54,6 +56,9 @@ public class GetFiles {
                         }
 
                     }
+                    //CHECK FOR ANY RESULTS AND TO TRIGGER saveHistory of HistoryController
+                    if(flag == 1)
+                    new HistoryController().saveHistory(directoryPath, keyword, phone);
 
                 }
 
@@ -65,4 +70,6 @@ public class GetFiles {
             }
             return new DirectoryModel(directoryPath,keyword,files);
         }
+
+        
     }

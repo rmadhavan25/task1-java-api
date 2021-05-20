@@ -4,6 +4,7 @@ import java.sql.*;
 
 import mainServer.models.UserModel;
 
+//contoller to verify user
 public class UserController {
     Connection con = null;
 
