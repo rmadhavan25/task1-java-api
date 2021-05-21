@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import mainServer.models.HistoryModel;
 import mainServer.models.ChartDataModel;
+import mainServer.models.ChartSetting;
 
 
 //controller to send chartdata(s) which are retrived from mysql database
@@ -44,7 +45,7 @@ public class HistoryController {
 
     //to get chartdata(s) of most searched stuff and return as HistoryModel
     public HistoryModel getMostSearched(String phone){
-        return new HistoryModel(getMostSearchedKeyword(phone),getMostSearchedDirectory(phone));
+        return new HistoryModel(mostSearchedKeywordChartSetting(),mostSearchedDirectoryChartSetting(),getMostSearchedKeyword(phone),getMostSearchedDirectory(phone));
     }
 
     //to get most searched keyword of particular user (LIMIT 5)
@@ -81,6 +82,31 @@ public class HistoryController {
             System.out.println(e);
         }
         return arr;
+    }
+
+    public ArrayList<String> getTopThreeKeywords(String phone){
+        ArrayList<String> arr = new ArrayList<String>();
+        String sql = "SELECT keyword, count(keyword) FROM history WHERE phone="+phone+" GROUP BY keyword ORDER BY COUNT(keyword) DESC LIMIT 3";
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while(rs.next()){
+                arr.add(rs.getString(1));
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return arr;
+    }
+
+    public ChartSetting mostSearchedKeywordChartSetting(){
+        return new ChartSetting("Most Searched Keyword","DECREASING ORDER","keywords","Number Of Times","","fusion","f2726f","280","20","280","20","80");
+    }
+
+    public ChartSetting mostSearchedDirectoryChartSetting(){
+        return new ChartSetting("Most Searched Directory Path","DECREASING ORDER","Directory-Paths","Number Of Times","","fusion","5d62b5","280","20","280","20","80");
     }
     
 }

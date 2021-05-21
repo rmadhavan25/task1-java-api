@@ -2,11 +2,15 @@ package mainServer.controller;
 
 import java.io.*;
 import java.util.*;
+
+
 import mainServer.models.*;
 
 public class GetFiles {
 
         ArrayList<HashMap<String,String>> files = new ArrayList<HashMap<String,String>>();
+        ArrayList<String> columns = new ArrayList<String>();
+    
 
         public GetFiles(){
 
@@ -68,7 +72,9 @@ public class GetFiles {
                 System.out.println(e);
 
             }
-            return new DirectoryModel(directoryPath,keyword,files);
+            columns.add("ALL FILES");
+            columns.add("TYPE");
+            return new DirectoryModel(directoryPath,keyword,files,columns);
         }
 
         
