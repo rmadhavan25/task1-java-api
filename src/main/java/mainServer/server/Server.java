@@ -39,14 +39,14 @@ public Response userSignIn(@QueryParam("phoneNumber")String phoneNumber,@QueryPa
 @GET
 @Produces(MediaType.APPLICATION_JSON)
 public Response getMostKeywords(@QueryParam("phone")String phone) {
-    return Response.ok(200).entity(new HistoryController().getMostSearched(phone) ).header("Access-Control-Allow-Origin", "*").build() ;
+    return Response.ok(200).entity(new DataSourceController().getMostSearched(phone) ).header("Access-Control-Allow-Origin", "*").build() ;
 }
 
 @Path("/keyworddata")
 @GET
 @Produces(MediaType.APPLICATION_JSON)
 public Response getKeywordData(@QueryParam("phone")String phone){
-    return Response.ok(200).entity(new HistoryController().getTopThreeKeywords(phone)).header("Access-Control-Allow-Origin", "*").build();
+    return Response.ok(200).entity(new DataSourceController().getTopThreeKeywords(phone)).header("Access-Control-Allow-Origin", "*").build();
 }
 
 }

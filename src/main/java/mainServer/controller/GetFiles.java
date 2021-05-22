@@ -62,7 +62,7 @@ public class GetFiles {
                     }
                     //CHECK FOR ANY RESULTS AND TO TRIGGER saveHistory of HistoryController
                     if(flag == 1)
-                    new HistoryController().saveHistory(directoryPath, keyword, phone);
+                    new DataSourceController().saveHistory(directoryPath, keyword, phone);
 
                 }
 

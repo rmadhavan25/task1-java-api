@@ -3,16 +3,16 @@ package mainServer.controller;
 import java.sql.*;
 import java.util.ArrayList;
 
-import mainServer.models.HistoryModel;
+import mainServer.models.DataSource;
 import mainServer.models.ChartDataModel;
 import mainServer.models.ChartSetting;
 
 
 //controller to send chartdata(s) which are retrived from mysql database
-public class HistoryController {
+public class DataSourceController {
 
     Connection con = null;
-    public HistoryController(){
+    public DataSourceController(){
         String url = "jdbc:mysql://localhost:3306/file_system";
         String userName = "root";
         String password = "sudha10";
@@ -44,8 +44,11 @@ public class HistoryController {
     }
 
     //to get chartdata(s) of most searched stuff and return as HistoryModel
-    public HistoryModel getMostSearched(String phone){
-        return new HistoryModel(mostSearchedKeywordChartSetting(),mostSearchedDirectoryChartSetting(),getMostSearchedKeyword(phone),getMostSearchedDirectory(phone));
+    public ArrayList<DataSource> getMostSearched(String phone){
+        ArrayList<DataSource> ds = new ArrayList<DataSource>();
+        ds.add(new DataSource(mostSearchedKeywordChartSetting(),getMostSearchedKeyword(phone)));
+        ds.add(new DataSource(mostSearchedDirectoryChartSetting(),getMostSearchedDirectory(phone)));
+        return ds;
     }
 
     //to get most searched keyword of particular user (LIMIT 5)
